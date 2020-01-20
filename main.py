@@ -15,12 +15,14 @@ MODEL_CHECKPOINTS = CURRENT_DIR_PATH + '/models/models_checkpoints/'
 
 def make_args_parser():
     # create an ArgumentParser object
-    parser = argparse.ArgumentParser(description='DANN - Unsupervised Domain Adaptation by Backpropagation')
+    parser = argparse.ArgumentParser(description='DAMNets - Domain Adaptive Multibranch Networks')
     # fill parser with information about program arguments
     parser.add_argument('-s', '--source', default='MNIST',
                         help='Define the source domain')
     parser.add_argument('-t', '--target', default='MNIST_M',
                         help='Define the target domain')
+    parser.add_argument('-m', '--model', default='MultibranchLeNet',
+                        help='Define DAMNet model')
     # return an ArgumentParser object
     return parser.parse_args()
 
@@ -53,7 +55,8 @@ def main():
         else:
             raise
     # Init model
-    net = models.DANN()
+    if args.model == 'MultibranchLeNet':
+        net = models.MultibranchLeNet()
     if device == 'cuda':
         net.cuda()
     # Init losses
