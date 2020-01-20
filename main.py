@@ -66,7 +66,7 @@ def main():
         class_criterion.cuda()
         domain_criterion.cuda()
     # Init optimizer
-    optimizer = optim.Adam(net.parameters(), lr=constants.LR)
+    optimizer = optim.SGD(net.parameters(), lr=constants.LR, momentum=constants.MOMENTUM)
     # Init all parameters to be optimized using Backpropagation
     for param in net.parameters():
         param.requires_grad = True
