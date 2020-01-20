@@ -1,3 +1,5 @@
+import torch
+
 def optimizer_scheduler(optimizer, p):
     """
     Adjust the learning rate of optimizer
@@ -9,3 +11,6 @@ def optimizer_scheduler(optimizer, p):
         param_group['lr'] = 0.01 / (1. + 10 * p) ** 0.75
 
     return optimizer
+
+def sigmoid(parameter, plasticity):
+    return 1. / (1 + torch.exp((-plasticity * parameter)))

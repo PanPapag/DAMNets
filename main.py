@@ -9,6 +9,8 @@ import os
 import torch.optim as optim
 
 from utils import constants
+from torch.autograd import Variable
+
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 MODEL_CHECKPOINTS = CURRENT_DIR_PATH + '/models/models_checkpoints/'
@@ -57,6 +59,7 @@ def main():
     # Init model
     if args.model == 'MultibranchLeNet':
         net = models.MultibranchLeNet()
+        architectures = ['conv1_d', 'conv1_t', 'conv2_d', 'conv2_t']
     if device == 'cuda':
         net.cuda()
     # Init losses
@@ -73,8 +76,8 @@ def main():
     # Train model
     for epoch in range(constants.N_EPOCHS):
         train_test.train(net, class_loss, domain_loss, source_dataloader,
-                         target_dataloader, optimizer, epoch,
-                         model_root, device)
+                         target_dataloader, optimizer, epoch, model_root,
+                         device)
         train_test.test(net, source_dataloader, target_dataloader, device)
 
 if __name__ == '__main__':
