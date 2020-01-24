@@ -2,7 +2,11 @@
 
 Currently only LeNet based Multibranch Network has been implemented
 
-### 
+### General Architecture
+![](https://github.com/PanPapag/DAMNets/blob/master/images/damnet.png)
+
+### Multibranch LeNet
+![](https://github.com/PanPapag/DAMNets/blob/master/images/damnet_lenet.png)
 
 ### How to use?
 1. Open the terminal
