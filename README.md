@@ -19,7 +19,7 @@ Currently only LeNet based Multibranch Network has been implemented
 ### TODOs
 1. Add more available datasets
 2. Add model checkpoint saving option, so as to load a pretrained model and test.
-3. Build the other DAMNets (
+3. Build the other DAMNets
 
 Feel free to contribute :smiley:
 
